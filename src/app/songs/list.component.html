@@ -1,0 +1,41 @@
+﻿<!-- Manageuser -->
+<h1>Welcome Admin!</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add Songs</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width: 15%">Song ID</th>
+      <th style="width: 15%">Song Name</th>
+      <th style="width: 15%">Song Url</th>
+      <th style="width: 15%">Artists</th>
+      <th style="width: 15%">Album</th>
+      <th style="width: 15%">Cover Image</th>
+      <th style="width: 10%"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users ; let row=index">
+      <td>{{user.id}}</td>
+      <td>{{user.songName}}</td>
+      <td>{{user.url}}</td>
+      <td>{{user.artist}}</td>
+      <td>{{user.album}}</td>
+      <td>{{user.image}}</td>
+
+      <td style="white-space: nowrap">
+        <a routerLink="edit/{{user.id}}" class="btn btn-sm btn-primary mr-1">Edit Song</a>
+        <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger btn-delete-user"
+          [disabled]="user.isDeleting">
+          <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+          <span *ngIf="!user.isDeleting">Delete</span>
+        </button>
+
+      </td>
+    </tr>
+    <tr *ngIf="!users">
+      <td colspan="4" class="text-center">
+        <span class="spinner-border spinner-border-lg align-center"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>

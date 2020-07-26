@@ -1,0 +1,67 @@
+﻿<h1 *ngIf="isAddMode">Add Songs</h1>
+<h1 *ngIf="!isAddMode">Edit Song</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="SongName" id="SongName">SongName</label>
+      <input type="text" formControlName="SongName" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.SongName.errors }" />
+      <div *ngIf="submitted && f.SongName.errors" class="invalid-feedback">
+        <div *ngIf="f.SongName.errors.required">SongName is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="SongUrl" id="SongUrl">Song Url</label>
+      <input type="text" formControlName="SongUrl" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.SongUrl.errors }" />
+      <div *ngIf="submitted && f.SongUrl.errors" class="invalid-feedback">
+        <div *ngIf="f.SongUrl.errors.required">SongUrl is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="Artist" id="Artist">Artist</label>
+      <input type="text" formControlName="Artist" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.Artist.errors }" />
+      <div *ngIf="submitted && f.Artist.errors" class="invalid-feedback">
+        <div *ngIf="f.Artist.errors.required">Artist is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="Album" id="Album">Album</label>
+      <input type="text" formControlName="Album" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.Album.errors }" />
+      <div *ngIf="submitted && f.Album.errors" class="invalid-feedback">
+        <div *ngIf="f.Album.errors.required">Album is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label for="CoverImage" id="CoverImage">CoverImage</label>
+      <input type="text" formControlName="CoverImage" placeholder="enter xxxx(or base64 format)" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.CoverImage.errors }" />
+      <div *ngIf="submitted && f.CoverImage.errors" class="invalid-feedback">
+        <div *ngIf="f.CoverImage.errors.required">CoverImage is required</div>
+      </div>
+    </div>
+  </div>
+  <div id="message"></div>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Save
+    </button>
+    <a routerLink="/users" class="btn btn-link">Cancel</a>
+  </div>
+</form>
